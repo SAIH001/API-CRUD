@@ -39,19 +39,19 @@
 
 <div class="container">
     <h1 class="text-center mt-5">Addmision Form</h1>
-<form class="mt-5">
+<form class="mt-5" onsubmit="createDATA()">
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Student Email</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <input type="email" class="form-control" id="studentEmail" aria-describedby="emailHelp">
       <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Student Name</label>
-      <input type="password" class="form-control" id="exampleInputPassword1">
+      <input type="password" class="form-control" id="studentName">
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Student Course</label>
-      <select class="form-control" id="">
+      <select class="form-control" id="studentCourse">
         <option value="CPISM">CPISM</option>
         <option value="DISM">DISM</option>
         <option value="HDSE">HDSE</option>
