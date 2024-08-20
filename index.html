@@ -39,7 +39,17 @@
 
 <div class="container">
     <h1 class="text-center mt-5">Addmision Form</h1>
-<form class="mt-5" onsubmit="createDATA()">
+    
+    
+    
+    
+    <div class="alert alert-success"  id="successMessage"  role="alert">
+      A simple success alert—check it out!
+    </div>
+
+
+
+
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Student Email</label>
       <input type="email" class="form-control" id="studentEmail" aria-describedby="emailHelp">
@@ -47,7 +57,7 @@
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Student Name</label>
-      <input type="password" class="form-control" id="studentName">
+      <input type="text" class="form-control" id="studentName">
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Student Course</label>
@@ -59,8 +69,8 @@
       </select>
     </div>
    
-    <button type="submit" class="btn btn-primary">Register</button>
-</form>
+    <button type="button" onclick="createDATA()" class="btn btn-primary">Register</button>
+
 </div>
 
 
