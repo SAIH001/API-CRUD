@@ -92,12 +92,18 @@ async function fetchUser(){
 
     var update_Btn = document.createElement("button");
     update_Btn.innerHTML = "Update";
-    update_Btn.classList="btn btn-primary btn-sm"
+    update_Btn.classList="btn btn-primary btn-sm";
+    update_Btn.onclick=function(){
+      updateRecord(user.id)
+    }
    
     var Delete_Btn = document.createElement("button");
     Delete_Btn.innerHTML = "Delete";
     Delete_Btn.classList="btn btn-danger btn-sm"
     Delete_Btn.id="deleteBtn"
+    Delete_Btn.onclick = function(){
+      deleteRecord(user.id)
+    }
 
    
    
@@ -125,7 +131,25 @@ async function fetchUser(){
 
 
 async function deleteRecord(userId){
-  alert(`user id ${userId}`)
+
+  const userData = await fetch("https://66c46cafb026f3cc6cef4c3e.mockapi.io/aptech/NewAddmission");
+
+
+  const userDataSet = await userData.json()
+
+
+  var singleUserData = await userDataSet.filter(options=>options.id == userId);
+
+
+  console.log(singleUserData)
+
+
+}
+
+
+
+async function updateRecord(userId){
+  alert(`user update id ${userId}`)
 }
 
 
