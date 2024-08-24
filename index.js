@@ -55,3 +55,81 @@ async function createDATA (){
 
 
 }
+
+
+async function fetchUser(){
+
+  var tableBody  = document.getElementById("tbleBody");
+
+
+  const userData = await fetch("https://66c46cafb026f3cc6cef4c3e.mockapi.io/aptech/NewAddmission");
+
+  const userDetails = await userData.json();
+
+ 
+
+  userDetails.forEach(user=>{
+
+
+    var tableRow = document.createElement("tr");
+
+    var tableHeading = document.createElement("th");
+    tableHeading.innerHTML = user.id;
+
+    var tableData_username = document.createElement("td");
+    tableData_username.innerHTML = user.name;
+
+    var tableData_useremail = document.createElement("td");
+    tableData_useremail.innerHTML = user.email;
+
+    var tableData_usercourse = document.createElement("td");
+    tableData_usercourse.innerHTML = user.course;
+    
+    
+    
+    var tableData_userAction = document.createElement("td");
+
+
+    var update_Btn = document.createElement("button");
+    update_Btn.innerHTML = "Update";
+    update_Btn.classList="btn btn-primary btn-sm"
+   
+    var Delete_Btn = document.createElement("button");
+    Delete_Btn.innerHTML = "Delete";
+    Delete_Btn.classList="btn btn-danger btn-sm"
+    Delete_Btn.id="deleteBtn"
+
+   
+   
+    tableData_userAction.append(update_Btn);
+    tableData_userAction.append(Delete_Btn);
+
+
+    tableRow.append(tableHeading)
+    tableRow.append(tableData_username)
+    tableRow.append(tableData_useremail)
+    tableRow.append(tableData_usercourse)
+    tableRow.append(tableData_userAction)
+
+
+    tableBody.append(tableRow)
+ 
+    
+  })
+
+
+
+
+}
+
+
+
+async function deleteRecord(userId){
+  alert(`user id ${userId}`)
+}
+
+
+
+
+
+
