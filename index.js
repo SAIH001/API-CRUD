@@ -90,12 +90,13 @@ async function fetchUser(){
     var tableData_userAction = document.createElement("td");
 
 
-    var update_Btn = document.createElement("button");
+    var update_Btn = document.createElement("a");
     update_Btn.innerHTML = "Update";
     update_Btn.classList="btn btn-primary btn-sm";
-    update_Btn.onclick=function(){
-      updateRecord(user.id)
-    }
+    update_Btn.href = `Update.html?userid=${user.id}`
+    // update_Btn.onclick=function(){
+    //   updateRecord(user.id)
+    // }
    
     var Delete_Btn = document.createElement("button");
     Delete_Btn.innerHTML = "Delete";
@@ -132,26 +133,63 @@ async function fetchUser(){
 
 async function deleteRecord(userId){
 
-  const userData = await fetch("https://66c46cafb026f3cc6cef4c3e.mockapi.io/aptech/NewAddmission");
+  const userData = await fetch(`https://66c46cafb026f3cc6cef4c3e.mockapi.io/aptech/NewAddmission/${userId}`,{
 
 
-  const userDataSet = await userData.json()
+  method:'DELETE'
+    
+  }
+  );
 
 
-  var singleUserData = await userDataSet.filter(options=>options.id == userId);
+  window.location.href="studentlist.html"
 
-
-  console.log(singleUserData)
 
 
 }
 
 
+document.getElementById("update").addEventListener('click',updateRecord)
 
-async function updateRecord(userId){
-  alert(`user update id ${userId}`)
+async function updateRecord(){
+
+  
+  /*
+  URLSearchParams()
+  yeah method url me koi variable ya parameter ko find krne kelie istemal huta he 
+  
+  window.location.search
+  yeah mere current window ke url me serach krne ka keh raha he parameter 
+  
+
+  searchParams.has('userid')
+  yeah confirm krega userid name ka koi parameter he ya nh
+
+  searchParams.get('userid')
+  mujooda parameter ke variable mese value ko extract krega
+
+
+  */
+
+
+
+
+  const searchParams = new URLSearchParams(window.location.search);
+
+ 
+  var updateUser = searchParams.get('userid'); 
+
+
+  var user = await fetch(`https://66c46cafb026f3cc6cef4c3e.mockapi.io/aptech/NewAddmission/${updateUser}`)
+
+
+  console.log(user.json())
+
 }
 
+
+
+  
 
 
 
