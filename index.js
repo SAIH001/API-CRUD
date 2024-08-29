@@ -149,11 +149,12 @@ async function deleteRecord(userId){
 }
 
 
-document.getElementById("update").addEventListener('click',updateRecord)
+
+
+
+var userUpdateRecord ;
 
 async function updateRecord(){
-
-  
   /*
   URLSearchParams()
   yeah method url me koi variable ya parameter ko find krne kelie istemal huta he 
@@ -173,23 +174,46 @@ async function updateRecord(){
 
 
 
-
   const searchParams = new URLSearchParams(window.location.search);
 
  
-  var updateUser = searchParams.get('userid'); 
+  var updateUserID = searchParams.get('userid'); 
+  
+
+ var updateEmail = document.getElementById('UpdateStudentEmail').value;
+ var updateName = document.getElementById('UpdateStudentName').value;
+ var updateCourse = document.getElementById('UpdateStudentCourse').value;
 
 
-  var user = await fetch(`https://66c46cafb026f3cc6cef4c3e.mockapi.io/aptech/NewAddmission/${updateUser}`)
+
+ const updatedData = {
+  name:updateName,
+  email: updateEmail,
+  course: updateCourse,
+  id: updateUserID
+ }
 
 
-  console.log(user.json())
+
+ const UpdateResponse = await fetch(`https://66c46cafb026f3cc6cef4c3e.mockapi.io/aptech/NewAddmission/${updateUserID}`,{
+   method:'PUT',
+  headers:{
+    'Content-Type':'application/json'
+  },
+  body:JSON.stringify(updatedData)
+
+  
+ })
+
+window.location.href = "studentlist.html"
+
+
 
 }
 
 
 
-  
+
 
 
 
